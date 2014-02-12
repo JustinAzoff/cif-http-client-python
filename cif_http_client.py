@@ -8,10 +8,11 @@ import requests
 import json
 
 class Client:
-    def __init__(self, url, api_key, **default_params):
+    def __init__(self, url, api_key, http_opts={}, **default_params):
         """
         :param url: URL of CIF API endpoint
         :param api_key: CIF API key
+        :param http_opts: Extra options to add to requests.session
 
         Any Extra kwargs will be passed on to search
         """
@@ -20,6 +21,8 @@ class Client:
 
         self.session = requests.session()
         self.session.headers["Accept"] = "application/json"
+        for k,v in http_opts.items():
+            setattr(self.session, k, v)
 
         self.default_params = default_params
         self.default_params["apikey"] = api_key
