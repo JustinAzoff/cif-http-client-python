@@ -4,7 +4,7 @@ except ImportError:
     from distutils.core import setup
 
 setup(name="cif-http-client",
-    version="0.1",
+    version="0.2",
     description="Client for the CIF HTTP API",
     long_description="",
     url="https://github.com/JustinAzoff/cif-http-client-python",
